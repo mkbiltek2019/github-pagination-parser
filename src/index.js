@@ -2,8 +2,9 @@ const mock = require('../mock.js');
 
 const sections = mock.split(',');
 
-const teste = sections.map( i => i.split(';'));
+const values = sections.map( section => section.split(';'));
 
-const outro = teste.map ( i => i[0]);
-
-console.log(outro);
+values.map( section => {
+    console.log(section[0]);
+    console.log(section[1]);
+    });
