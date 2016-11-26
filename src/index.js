@@ -1,24 +1,14 @@
 const mock = require('../mock.js');
-const sections = mock.split(',');
-const values = sections.map( section => section.split(';'));
-const rxPage = /[?|&]page=(\d+)/;
-const rxRel = /rel="(.+)"/;
+const parser = require('./parser');
 
-const data = mock.split(',') // Transforma em array de string separado por ';'
-    .map(section => section.split(';')) //Quebra em mais arrays
-    .map(section => { 
-        const page = Number(rxPage.exec(section[0])[1]);
-        const rel = rxRel.exec(section[1])[1];
-        return [page, rel];
-    })
-    .reduce((acc, value, index) => {
-       acc[value[1]] = value[0];
-       return acc
-    }, {});
-    
+const data = parser(mock);
+
 console.log(data);
 
 // ** Abaixo Código antes de ser refatorado, para referência futura **
+// const sections = mock.split(',');
+// const values = sections.map( section => section.split(';'));
+//
 // let data1 = values.map( section => {
 //     const page = Number(rxPage.exec(section[0])[1]);
 //     const rel = rxRel.exec(section[1])[1];
