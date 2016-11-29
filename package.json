@@ -3,5 +3,11 @@
   "version": "0.1.0",
   "main": "src/index.js",
   "author": "Fernando de A. Ponte Filho <sobralense@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts":{
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest-cli": "^17.0.3"
+  }
 }
